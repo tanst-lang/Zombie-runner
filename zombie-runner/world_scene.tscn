@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cik1db6dcm3hx"]
 
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
+[ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
+[ext_resource type="PackedScene" uid="uid://c5sjbub5xei0b" path="res://obstacles_scene.tscn" id="3_ijqok"]
 
 [node name="world" type="Node2D" unique_id=353233387]
 
@@ -8,3 +10,15 @@
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
 position = Vector2(422, 398)
+
+[node name="obstacles_spawner" type="Node2D" parent="." unique_id=433028103]
+script = ExtResource("2_77iun")
+obstacles_scene = Array[PackedScene]([ExtResource("3_ijqok")])
+
+[node name="Timer" type="Timer" parent="obstacles_spawner" unique_id=861446504]
+wait_time = 4.0
+
+[node name="Marker2D" type="Marker2D" parent="obstacles_spawner" unique_id=1037602781]
+position = Vector2(483, -35)
+
+[connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
