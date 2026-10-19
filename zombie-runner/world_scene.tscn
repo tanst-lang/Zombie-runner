@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cik1db6dcm3hx"]
+
+[ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
+
+[node name="world" type="Node2D" unique_id=353233387]
+
+[node name="ground" type="TileMapLayer" parent="." unique_id=485675896]
+
+[node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
+position = Vector2(422, 398)
