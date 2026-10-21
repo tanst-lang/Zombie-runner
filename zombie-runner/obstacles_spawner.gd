@@ -1,12 +1,10 @@
 extends Node2D
 
-@export var obstacles_scene: Array[PackedScene]
-
 @onready var marker: Marker2D = $Marker2D
 
 func _on_timer_timeout() -> void:
-	var random_obstacle: Node = obstacles_scene.pick_random()
-	var random_obstacle_instance: Node = random_obstacle.instantiate()
-	add_child(random_obstacle_instance) 
+	var obstacles = preload("res://obstacles_scene.tscn").instantiate()
+	obstacles.position.y = marker.position.y
+	obstacles.position.x = randf_range(1,110) * 10
 	
-	random_obstacle_instance.position = marker.position
+	add_child(obstacles)
