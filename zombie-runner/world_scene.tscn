@@ -6,7 +6,7 @@
 [node name="world" type="Node2D" unique_id=353233387]
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
-position = Vector2(422, 398)
+position = Vector2(597, 511)
 
 [node name="obstacles_spawner" type="Node2D" parent="." unique_id=433028103]
 script = ExtResource("2_77iun")
