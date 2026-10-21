@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
+[ext_resource type="Script" uid="uid://ho2g5cllo3qf" path="res://enemy_spawner.gd" id="3_77iun"]
 
 [node name="world" type="Node2D" unique_id=353233387]
 
@@ -12,9 +13,17 @@ position = Vector2(597, 511)
 script = ExtResource("2_77iun")
 
 [node name="Timer" type="Timer" parent="obstacles_spawner" unique_id=861446504]
+wait_time = 3.0
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="obstacles_spawner" unique_id=1037602781]
 position = Vector2(486, -44)
+
+[node name="enemy spawner" type="Node2D" parent="." unique_id=1535173030]
+script = ExtResource("3_77iun")
+
+[node name="Timer" type="Timer" parent="enemy spawner" unique_id=2036157581]
+
+[node name="Marker2D" type="Marker2D" parent="enemy spawner" unique_id=877401976]
 
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]

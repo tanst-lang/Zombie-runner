@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c1cnkhjwbj27r"]
+
+[ext_resource type="Script" uid="uid://bimgiq6drcvuw" path="res://enemy.gd" id="1_nbol8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6tghx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge4e3"]
+size = Vector2(37, 39.5)
+
+[node name="enemy" type="Area2D" unique_id=1360148667]
+script = ExtResource("1_nbol8")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="." unique_id=776442898]
+scale = Vector2(34.5, 37.5)
+texture = SubResource("PlaceholderTexture2D_6tghx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=326611041]
+position = Vector2(0.5, 0.25)
+shape = SubResource("RectangleShape2D_ge4e3")
