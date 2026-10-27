@@ -3,11 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
 [ext_resource type="Script" uid="uid://ho2g5cllo3qf" path="res://enemy_spawner.gd" id="3_77iun"]
+[ext_resource type="PackedScene" uid="uid://dnaevhn75frux" path="res://bullet_scene.tscn" id="4_ijqok"]
 
 [node name="world" type="Node2D" unique_id=353233387]
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
 position = Vector2(597, 511)
+
+[node name="bullet" parent="." unique_id=1576397597 instance=ExtResource("4_ijqok")]
+position = Vector2(599, 382)
 
 [node name="obstacles_spawner" type="Node2D" parent="." unique_id=433028103]
 script = ExtResource("2_77iun")

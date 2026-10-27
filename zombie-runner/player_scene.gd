@@ -1,22 +1,24 @@
-extends CharacterBody2D
+extends Area2D
+class_name player
+
+@onready var bullet_prefab = preload("res://bullet_scene.tscn")
+const SPEED = 10
+var ammo = 2
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("player_left") and position.x > 1:
+		position.x -= SPEED
+		
+	if Input.is_action_pressed("player_right") and position.x < 1100:
+		position.x += SPEED
+		
+	if Input.is_action_just_pressed("shoot") and ammo > 0:
+		var bullet = bullet_prefab.instantiate()
+		bullet.position = position
+		ammo -=1
+		get_parent().add_child(bullet)
 
 
-const SPEED = 350.0
-const JUMP_VELOCITY = -400.0
 
 
-func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	#kill script
-	pass # Replace with function body.
+	
