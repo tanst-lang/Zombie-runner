@@ -1,11 +1,10 @@
 extends Node2D
 
+@onready var marker: Marker2D= $Marker2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_timer_timeout() -> void:
+	var enemy = preload("res://enemy_scene.tscn").instantiate()
+	enemy.position.y = 0
+	enemy.position.x = randf_range(1,50) * 20
+	
+	add_child(enemy)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnaevhn75frux"]
 
-[ext_resource type="Script" uid="uid://ct2g1ppiue23x" path="res://area_2d.gd" id="1_aic6c"]
+[ext_resource type="Script" uid="uid://cg16he34327lo" path="res://bullet_script.gd" id="1_aic6c"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6tghx"]
 

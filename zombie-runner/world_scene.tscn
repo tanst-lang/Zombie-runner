@@ -27,6 +27,8 @@ position = Vector2(486, -44)
 script = ExtResource("3_77iun")
 
 [node name="Timer" type="Timer" parent="enemy spawner" unique_id=2036157581]
+wait_time = 3.0
+autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="enemy spawner" unique_id=877401976]
 
