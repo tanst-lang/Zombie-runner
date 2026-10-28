@@ -8,8 +8,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is bullet:
-		print("bullet")
-	
 	if area is player:
 		print("player") 

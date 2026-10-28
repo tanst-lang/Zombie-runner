@@ -5,6 +5,9 @@ class_name player
 const SPEED = 10
 var ammo = 2
 
+func _ready() -> void:
+	pass
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("player_left") and position.x > 1:
 		position.x -= SPEED
@@ -17,6 +20,7 @@ func _process(delta: float) -> void:
 		bullet.position = position
 		ammo -=1
 		get_parent().add_child(bullet)
+
 
 
 

@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://cik1db6dcm3hx"]
 
+[ext_resource type="Script" uid="uid://b8vs2bpj8iumv" path="res://world.gd" id="1_cbn5i"]
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
 [ext_resource type="Script" uid="uid://ho2g5cllo3qf" path="res://enemy_spawner.gd" id="3_77iun"]
 [ext_resource type="PackedScene" uid="uid://dnaevhn75frux" path="res://bullet_scene.tscn" id="4_ijqok"]
+[ext_resource type="PackedScene" uid="uid://c1cnkhjwbj27r" path="res://enemy_scene.tscn" id="6_3gybg"]
+
+[sub_resource type="SystemFont" id="SystemFont_ge4e3"]
+
+[sub_resource type="Theme" id="Theme_6tghx"]
+default_font = SubResource("SystemFont_ge4e3")
+default_font_size = 61
 
 [node name="world" type="Node2D" unique_id=353233387]
+script = ExtResource("1_cbn5i")
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
 position = Vector2(597, 511)
@@ -20,9 +29,6 @@ script = ExtResource("2_77iun")
 wait_time = 3.0
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="obstacles_spawner" unique_id=1037602781]
-position = Vector2(486, -44)
-
 [node name="enemy spawner" type="Node2D" parent="." unique_id=1535173030]
 script = ExtResource("3_77iun")
 
@@ -30,6 +36,29 @@ script = ExtResource("3_77iun")
 wait_time = 3.0
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="enemy spawner" unique_id=877401976]
+[node name="game_ui" type="Control" parent="." unique_id=978315638]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1161.0
+offset_bottom = 650.0
+theme = SubResource("Theme_6tghx")
+
+[node name="score_label" type="Label" parent="game_ui" unique_id=1379286506]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 89.0
+text = "Score: 000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ammo_label" type="Label" parent="game_ui" unique_id=2067142503]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 84.0
+
+[node name="enemy" parent="." unique_id=1360148667 instance=ExtResource("6_3gybg")]
+position = Vector2(604, -107)
 
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="enemy spawner/Timer" to="enemy spawner" method="_on_timer_timeout"]
+[connection signal="enemy_killed" from="enemy" to="." method="_on_enemy_enemy_killed"]
