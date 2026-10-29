@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://b8vs2bpj8iumv" path="res://world.gd" id="1_cbn5i"]
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
-[ext_resource type="Script" uid="uid://ho2g5cllo3qf" path="res://enemy_spawner.gd" id="3_77iun"]
 [ext_resource type="PackedScene" uid="uid://dnaevhn75frux" path="res://bullet_scene.tscn" id="4_ijqok"]
-[ext_resource type="PackedScene" uid="uid://c1cnkhjwbj27r" path="res://enemy_scene.tscn" id="6_3gybg"]
 
 [sub_resource type="SystemFont" id="SystemFont_ge4e3"]
 
@@ -22,17 +20,14 @@ position = Vector2(597, 511)
 [node name="bullet" parent="." unique_id=1576397597 instance=ExtResource("4_ijqok")]
 position = Vector2(599, 382)
 
+[node name="Timer" type="Timer" parent="." unique_id=2036157581]
+wait_time = 3.0
+autostart = true
+
 [node name="obstacles_spawner" type="Node2D" parent="." unique_id=433028103]
 script = ExtResource("2_77iun")
 
 [node name="Timer" type="Timer" parent="obstacles_spawner" unique_id=861446504]
-wait_time = 3.0
-autostart = true
-
-[node name="enemy spawner" type="Node2D" parent="." unique_id=1535173030]
-script = ExtResource("3_77iun")
-
-[node name="Timer" type="Timer" parent="enemy spawner" unique_id=2036157581]
 wait_time = 3.0
 autostart = true
 
@@ -53,12 +48,19 @@ vertical_alignment = 1
 
 [node name="ammo_label" type="Label" parent="game_ui" unique_id=2067142503]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 84.0
+offset_left = 51.0
+offset_top = 549.0
+offset_right = 318.0
+offset_bottom = 633.0
+text = "bullets: 0"
 
-[node name="enemy" parent="." unique_id=1360148667 instance=ExtResource("6_3gybg")]
-position = Vector2(604, -107)
+[node name="coins_label" type="Label" parent="game_ui" unique_id=1192901709]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 546.0
+offset_right = 1142.0
+offset_bottom = 630.0
+text = "Coins: 0"
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
-[connection signal="timeout" from="enemy spawner/Timer" to="enemy spawner" method="_on_timer_timeout"]
-[connection signal="enemy_killed" from="enemy" to="." method="_on_enemy_enemy_killed"]

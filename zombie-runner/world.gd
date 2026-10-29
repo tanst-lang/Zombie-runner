@@ -10,8 +10,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
+
+func _on_timer_timeout() -> void:
+	var enemy = preload("res://enemy_scene.tscn").instantiate()
+	enemy.position.y = 0
+	enemy.position.x = randf_range(1,110) * 10
+	enemy.enemy_killed.connect(_on_enemy_killed)
+	add_child(enemy)
+
+
 func _update_ui():
 	$game_ui/score_label.text = "score: " + str(score)
 
-func _on_enemy_enemy_killed() -> void:
+
+func _on_enemy_killed():
+	print("enemy killed")
 	score += 10
+	_update_ui()

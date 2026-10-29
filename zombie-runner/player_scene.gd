@@ -11,11 +11,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("player_left") and position.x > 1:
 		position.x -= SPEED
-		
+
 	if Input.is_action_pressed("player_right") and position.x < 1100:
 		position.x += SPEED
-		
-	if Input.is_action_just_pressed("shoot") and ammo > 0:
+
+	if Input.is_action_just_pressed("shoot") :
 		var bullet = bullet_prefab.instantiate()
 		bullet.position = position
 		ammo -=1
