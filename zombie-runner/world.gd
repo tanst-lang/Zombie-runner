@@ -28,3 +28,7 @@ func _on_enemy_killed():
 	print("enemy killed")
 	score += 10
 	_update_ui()
+
+
+func _on_restart_timer_timeout() -> void:
+	get_tree().reload_current_scene()

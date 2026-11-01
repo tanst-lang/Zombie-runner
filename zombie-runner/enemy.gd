@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name enemy
 var speed = 350
 signal enemy_killed
 
@@ -12,6 +12,3 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 		area.queue_free()
 		enemy_killed.emit()
-	
-	if area is player:
-		print("player") 

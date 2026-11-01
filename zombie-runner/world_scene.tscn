@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b8vs2bpj8iumv" path="res://world.gd" id="1_cbn5i"]
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
-[ext_resource type="PackedScene" uid="uid://dnaevhn75frux" path="res://bullet_scene.tscn" id="4_ijqok"]
 
 [sub_resource type="SystemFont" id="SystemFont_ge4e3"]
 
@@ -17,10 +16,7 @@ script = ExtResource("1_cbn5i")
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
 position = Vector2(597, 511)
 
-[node name="bullet" parent="." unique_id=1576397597 instance=ExtResource("4_ijqok")]
-position = Vector2(599, 382)
-
-[node name="Timer" type="Timer" parent="." unique_id=2036157581]
+[node name="enemy_timer" type="Timer" parent="." unique_id=2036157581]
 wait_time = 3.0
 autostart = true
 
@@ -39,28 +35,43 @@ offset_bottom = 650.0
 theme = SubResource("Theme_6tghx")
 
 [node name="score_label" type="Label" parent="game_ui" unique_id=1379286506]
-layout_mode = 0
-offset_right = 1157.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -578.5
+offset_right = 578.5
 offset_bottom = 89.0
+grow_horizontal = 2
 text = "Score: 000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ammo_label" type="Label" parent="game_ui" unique_id=2067142503]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 549.0
-offset_right = 318.0
-offset_bottom = 633.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 267.0
+grow_vertical = 0
 text = "bullets: 0"
 
 [node name="coins_label" type="Label" parent="game_ui" unique_id=1192901709]
-layout_mode = 0
-offset_left = 890.0
-offset_top = 546.0
-offset_right = 1142.0
-offset_bottom = 630.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Coins: 0"
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="restart_timer" type="Timer" parent="." unique_id=901879344]
+
+[connection signal="timeout" from="enemy_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]

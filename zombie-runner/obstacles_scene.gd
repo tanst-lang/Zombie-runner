@@ -1,4 +1,6 @@
 extends Area2D
+class_name obstacle
+
 
 var speed = 100
 # Called every frame. 'delta' is the elapsed time since the previous frame.
