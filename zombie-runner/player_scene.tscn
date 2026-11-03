@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://blg0gumwuixav"]
 
-[ext_resource type="Script" uid="uid://ku0m7n8mtl50" path="res://player_scene.gd" id="1_g5c48"]
-[ext_resource type="Texture2D" uid="uid://cutfydom2o770" path="res://icon.svg" id="1_g662q"]
+[ext_resource type="Script" uid="uid://ku0m7n8mtl50" path="res://scripts/player_scene.gd" id="1_g5c48"]
+[ext_resource type="Texture2D" uid="uid://bv5b67m6c2oo2" path="res://sprites/player-pixel-art.png" id="2_g5c48"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tghx"]
-size = Vector2(99, 89)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijqok"]
+radius = 22.0
+height = 52.0
 
 [node name="Area2D" type="Area2D" unique_id=621043706]
 script = ExtResource("1_g5c48")
@@ -12,10 +13,9 @@ script = ExtResource("1_g5c48")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1024116461]
 position = Vector2(-8.940697e-07, 3.218651e-06)
 scale = Vector2(0.8203125, 0.7421875)
-texture = ExtResource("1_g662q")
+texture = ExtResource("2_g5c48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1903224462]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_6tghx")
+shape = SubResource("CapsuleShape2D_ijqok")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

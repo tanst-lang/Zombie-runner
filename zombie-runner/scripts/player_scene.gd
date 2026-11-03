@@ -4,6 +4,7 @@ class_name player
 @onready var bullet_prefab = preload("res://bullet_scene.tscn")
 const SPEED = 10
 var ammo = 0
+var coins = 0
 signal restart
 
 
@@ -28,11 +29,20 @@ func _process(delta: float) -> void:
 
 func _update_ui():
 	$"../game_ui/ammo_label".text = "bullets: " + str(ammo)
+	$"../game_ui/coins_label".text = "coins: " + str(coins)
 
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is enemy or area is obstacle:
+	if area is zombie or area is obstacle:
 		restart.emit()
 		print("restart")
 		$"../restart_timer".start()
+	
+	if area is bullet_item:
+		ammo += 1
+		_update_ui()
+	
+	if area is coin_item:
+		coins += 1
+		_update_ui()

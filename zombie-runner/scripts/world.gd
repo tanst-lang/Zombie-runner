@@ -32,3 +32,17 @@ func _on_enemy_killed():
 
 func _on_restart_timer_timeout() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_item_timer_timeout() -> void:
+	var item = randi_range(1,2)
+	if item == 1:
+		var coin = preload("res://coin_scene.tscn").instantiate()
+		coin.position.y = 0
+		coin.position.x = randf_range(1,110) * 10
+		add_child(coin)
+	else:
+		var bullet_object = preload("res://bullet_item_scene.tscn").instantiate()
+		bullet_object.position.y = 0
+		bullet_object.position.x = randf_range(1,110) * 10
+		add_child(bullet_object)
