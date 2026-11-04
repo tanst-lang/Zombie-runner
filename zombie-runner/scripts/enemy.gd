@@ -1,10 +1,9 @@
 extends Area2D
 class_name zombie
-var speed = 350
 signal enemy_killed
 
 func _physics_process(delta: float) -> void:
-	position.y+= speed * delta
+	position.y+= (GlobalVariable.speed + 150) * delta
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is bullet:

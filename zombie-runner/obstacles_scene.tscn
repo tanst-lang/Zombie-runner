@@ -7,7 +7,7 @@
 size = Vector2(71, 82)
 
 [node name="object" type="Area2D" unique_id=941999521]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.845, 1.845)
 script = ExtResource("1_1gshu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1281299314]

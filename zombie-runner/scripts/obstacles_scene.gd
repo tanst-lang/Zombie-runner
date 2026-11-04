@@ -1,11 +1,10 @@
 extends Area2D
 class_name obstacle
+ 
 
-
-var speed = 100
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	position.y+= speed * delta
+func _physics_process(delta: float) -> void: 
+	position.y+= GlobalVariable.speed * delta
 
 
 

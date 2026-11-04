@@ -13,7 +13,11 @@ config_version=5
 config/name="zombie_runner"
 run/main_scene="uid://cik1db6dcm3hx"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.svg"
+
+[autoload]
+
+GlobalVariable="*uid://lg1ii18y4gab"
 
 [display]
 

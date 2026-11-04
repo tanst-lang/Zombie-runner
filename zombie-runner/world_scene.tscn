@@ -12,7 +12,7 @@ subpixel_positioning = 0
 default_font = SubResource("SystemFont_ge4e3")
 default_font_size = 61
 
-[node name="world" type="Node2D" unique_id=353233387]
+[node name="Game" type="Node2D" unique_id=353233387]
 script = ExtResource("1_cbn5i")
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
@@ -81,7 +81,13 @@ text = "Coins: 0"
 wait_time = 4.0
 autostart = true
 
+[node name="game_timer" type="Timer" parent="." unique_id=1209291003]
+wait_time = 5.0
+autostart = true
+ignore_time_scale = true
+
 [connection signal="timeout" from="enemy_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 [connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
