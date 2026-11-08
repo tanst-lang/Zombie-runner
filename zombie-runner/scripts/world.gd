@@ -7,12 +7,12 @@ var score= 0
 func _ready() -> void:
 	GlobalVariable.speed = 300
 	_update_ui()
-	Engine.time_scale = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 
 
 func _on_timer_timeout() -> void:
@@ -42,12 +42,12 @@ func _on_item_timer_timeout() -> void:
 	if item == 1:
 		var coin = preload("res://coin_scene.tscn").instantiate()
 		coin.position.y = 0
-		coin.position.x = randf_range(1,110) * 10
+		coin.position.x = randf_range(3,9) * 100
 		add_child(coin)
 	else:
 		var bullet_object = preload("res://bullet_item_scene.tscn").instantiate()
 		bullet_object.position.y = 0
-		bullet_object.position.x = randf_range(1,110) * 10
+		bullet_object.position.x = randf_range(3,9) * 100
 		add_child(bullet_object)
 
 
@@ -55,3 +55,9 @@ func _on_item_timer_timeout() -> void:
 func _on_game_timer_timeout() -> void:
 	if GlobalVariable.speed <500:
 		GlobalVariable.speed += 30
+
+
+
+func _on_score_timer_timeout() -> void:
+	score += GlobalVariable.speed / 100
+	_update_ui()

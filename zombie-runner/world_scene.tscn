@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b8vs2bpj8iumv" path="res://scripts/world.gd" id="1_cbn5i"]
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
 [ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://scripts/obstacles_spawner.gd" id="2_77iun"]
+[ext_resource type="PackedScene" uid="uid://crat6a06ilhf8" path="res://background.tscn" id="2_cbn5i"]
 [ext_resource type="FontFile" uid="uid://c2r76s4bla54a" path="res://fonts/ZOMBIE.TTF" id="4_ijqok"]
 
 [sub_resource type="SystemFont" id="SystemFont_ge4e3"]
@@ -15,8 +16,10 @@ default_font_size = 61
 [node name="Game" type="Node2D" unique_id=353233387]
 script = ExtResource("1_cbn5i")
 
+[node name="background" parent="." unique_id=734378662 instance=ExtResource("2_cbn5i")]
+
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
-position = Vector2(597, 527.175)
+position = Vector2(597, 552.175)
 scale = Vector2(3.075, 3.075)
 
 [node name="enemy_timer" type="Timer" parent="." unique_id=2036157581]
@@ -86,8 +89,12 @@ wait_time = 5.0
 autostart = true
 ignore_time_scale = true
 
+[node name="score_timer" type="Timer" parent="." unique_id=477987704]
+autostart = true
+
 [connection signal="timeout" from="enemy_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 [connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="score_timer" to="." method="_on_score_timer_timeout"]

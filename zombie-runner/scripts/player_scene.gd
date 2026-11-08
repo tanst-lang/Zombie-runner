@@ -9,13 +9,14 @@ signal restart
 
 
 func _ready() -> void:
-	pass
+	position.x = 575
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("player_left") and position.x > 1:
+	
+	if Input.is_action_pressed("player_left") and position.x > 207:
 		position.x -= SPEED
 
-	if Input.is_action_pressed("player_right") and position.x < 1100:
+	if Input.is_action_pressed("player_right") and position.x < 943:
 		position.x += SPEED
 
 	if Input.is_action_just_pressed("shoot") :
