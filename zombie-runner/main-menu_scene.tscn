@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dlm5aq2h2fskc"]
+
+[ext_resource type="Script" uid="uid://cje7rxq7yaoax" path="res://main_menu_script.gd" id="1_idifd"]
+[ext_resource type="FontFile" uid="uid://c2r76s4bla54a" path="res://fonts/ZOMBIE.TTF" id="2_xjean"]
+
+[node name="main_menu" type="Node2D" unique_id=771856121]
+script = ExtResource("1_idifd")
+
+[node name="main menu ui" type="Control" parent="." unique_id=1131108494]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1164.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="main menu ui" unique_id=1554805598]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -525.5
+offset_top = 70.0
+offset_right = 525.5
+offset_bottom = 215.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_xjean")
+theme_override_font_sizes/font_size = 145
+text = "ZOMBIE RUNNER"
+
+[node name="play" type="Button" parent="main menu ui" unique_id=286000418]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 99
+text = "play"
+
+[node name="credits" type="Button" parent="main menu ui" unique_id=1975739780]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -189.0
+offset_right = 119.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+text = "credits"
+
+[connection signal="pressed" from="main menu ui/play" to="." method="_on_play_pressed"]

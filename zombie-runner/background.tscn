@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://crat6a06ilhf8"]
+
+[ext_resource type="Script" uid="uid://clr2kwaw4tfdy" path="res://scripts/background_script.gd" id="1_i7s6n"]
+[ext_resource type="Texture2D" uid="uid://cwl0b6le8q2km" path="res://sprites/background-pixel-art-extended.png" id="1_oabld"]
+
+[node name="background" type="Node2D" unique_id=734378662]
+script = ExtResource("1_i7s6n")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1396500471]
+repeat_size = Vector2(0, 1190)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1441085352]
+position = Vector2(575, 166)
+scale = Vector2(23, 23)
+texture = ExtResource("1_oabld")

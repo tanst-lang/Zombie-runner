@@ -1,20 +1,100 @@
 [gd_scene format=3 uid="uid://cik1db6dcm3hx"]
 
+[ext_resource type="Script" uid="uid://b8vs2bpj8iumv" path="res://scripts/world.gd" id="1_cbn5i"]
 [ext_resource type="PackedScene" uid="uid://blg0gumwuixav" path="res://player_scene.tscn" id="1_vbdgo"]
-[ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://obstacles_spawner.gd" id="2_77iun"]
+[ext_resource type="Script" uid="uid://dypd7otegk3si" path="res://scripts/obstacles_spawner.gd" id="2_77iun"]
+[ext_resource type="PackedScene" uid="uid://crat6a06ilhf8" path="res://background.tscn" id="2_cbn5i"]
+[ext_resource type="FontFile" uid="uid://c2r76s4bla54a" path="res://fonts/ZOMBIE.TTF" id="4_ijqok"]
 
-[node name="world" type="Node2D" unique_id=353233387]
+[sub_resource type="SystemFont" id="SystemFont_ge4e3"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_6tghx"]
+default_font = SubResource("SystemFont_ge4e3")
+default_font_size = 61
+
+[node name="Game" type="Node2D" unique_id=353233387]
+script = ExtResource("1_cbn5i")
+
+[node name="background" parent="." unique_id=734378662 instance=ExtResource("2_cbn5i")]
 
 [node name="CharacterBody2D" parent="." unique_id=1844742056 instance=ExtResource("1_vbdgo")]
-position = Vector2(597, 511)
+position = Vector2(597, 552.175)
+scale = Vector2(3.075, 3.075)
+
+[node name="enemy_timer" type="Timer" parent="." unique_id=2036157581]
+wait_time = 3.0
+autostart = true
 
 [node name="obstacles_spawner" type="Node2D" parent="." unique_id=433028103]
 script = ExtResource("2_77iun")
 
 [node name="Timer" type="Timer" parent="obstacles_spawner" unique_id=861446504]
+wait_time = 3.0
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="obstacles_spawner" unique_id=1037602781]
-position = Vector2(486, -44)
+[node name="game_ui" type="Control" parent="." unique_id=978315638]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1161.0
+offset_bottom = 650.0
+theme = SubResource("Theme_6tghx")
 
+[node name="score_label" type="Label" parent="game_ui" unique_id=1379286506]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.5
+offset_right = 177.5
+offset_bottom = 89.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ijqok")
+theme_override_font_sizes/font_size = 70
+text = "Score: 000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ammo_label" type="Label" parent="game_ui" unique_id=2067142503]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 267.0
+grow_vertical = 0
+text = "bullets: 0"
+
+[node name="coins_label" type="Label" parent="game_ui" unique_id=1192901709]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Coins: 0"
+
+[node name="restart_timer" type="Timer" parent="." unique_id=901879344]
+
+[node name="item_timer" type="Timer" parent="." unique_id=1432404313]
+wait_time = 4.0
+autostart = true
+
+[node name="game_timer" type="Timer" parent="." unique_id=1209291003]
+wait_time = 5.0
+autostart = true
+ignore_time_scale = true
+
+[node name="score_timer" type="Timer" parent="." unique_id=477987704]
+autostart = true
+
+[connection signal="timeout" from="enemy_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
+[connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="score_timer" to="." method="_on_score_timer_timeout"]
