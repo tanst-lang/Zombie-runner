@@ -5,6 +5,7 @@ var score= 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Engine.time_scale= 1
 	GlobalVariable.speed = 300
 	$"restart screen".hide()
 	$game_ui.show()
