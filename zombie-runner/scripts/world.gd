@@ -6,6 +6,8 @@ var score= 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalVariable.speed = 300
+	$"restart screen".hide()
+	$game_ui.show()
 	_update_ui()
 
 
@@ -34,7 +36,9 @@ func _on_enemy_killed():
 
 
 func _on_restart_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	$"restart screen".show()
+	$game_ui.hide()
+	Engine.time_scale=0
 
 
 func _on_item_timer_timeout() -> void:
@@ -61,3 +65,9 @@ func _on_game_timer_timeout() -> void:
 func _on_score_timer_timeout() -> void:
 	score += GlobalVariable.speed / 100
 	_update_ui()
+
+
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main-menu_scene.tscn")

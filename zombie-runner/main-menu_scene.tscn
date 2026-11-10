@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlm5aq2h2fskc"]
 
-[ext_resource type="Script" uid="uid://cje7rxq7yaoax" path="res://main_menu_script.gd" id="1_idifd"]
+[ext_resource type="Script" uid="uid://cje7rxq7yaoax" path="res://scripts/main_menu_script.gd" id="1_idifd"]
 [ext_resource type="FontFile" uid="uid://c2r76s4bla54a" path="res://fonts/ZOMBIE.TTF" id="2_xjean"]
 
 [node name="main_menu" type="Node2D" unique_id=771856121]
@@ -11,6 +11,24 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1164.0
 offset_bottom = 648.0
+
+[node name="Label2" type="Label" parent="main menu ui" unique_id=1251825275]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -95.5
+offset_right = 20.0
+offset_bottom = -72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 37
+text = "arrow keys to move side to side 
+space to shoot"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="main menu ui" unique_id=1554805598]
 layout_mode = 1
@@ -33,13 +51,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -123.0
+offset_top = 1.0
+offset_right = 123.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 99
+theme_override_font_sizes/font_size = 80
 text = "play"
 
 [node name="credits" type="Button" parent="main menu ui" unique_id=1975739780]
@@ -59,3 +77,4 @@ theme_override_font_sizes/font_size = 70
 text = "credits"
 
 [connection signal="pressed" from="main menu ui/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main menu ui/credits" to="." method="_on_credits_pressed"]

@@ -79,6 +79,7 @@ grow_vertical = 0
 text = "Coins: 0"
 
 [node name="restart_timer" type="Timer" parent="." unique_id=901879344]
+wait_time = 0.1
 
 [node name="item_timer" type="Timer" parent="." unique_id=1432404313]
 wait_time = 4.0
@@ -92,9 +93,46 @@ ignore_time_scale = true
 [node name="score_timer" type="Timer" parent="." unique_id=477987704]
 autostart = true
 
+[node name="restart screen" type="Control" parent="." unique_id=1066444188]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="restart screen" unique_id=1126956697]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 102
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="restart screen" unique_id=1889678370]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.5
+offset_top = -198.0
+offset_right = 156.5
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 110
+text = "home"
+
 [connection signal="timeout" from="enemy_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="obstacles_spawner/Timer" to="obstacles_spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 [connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="score_timer" to="." method="_on_score_timer_timeout"]
+[connection signal="pressed" from="restart screen/Button" to="." method="_on_button_pressed"]

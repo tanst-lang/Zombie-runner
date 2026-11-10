@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="zombie_runner"
-run/main_scene="uid://cik1db6dcm3hx"
+run/main_scene="uid://dlm5aq2h2fskc"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://sprites/icon.svg"
 

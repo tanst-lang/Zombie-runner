@@ -39,6 +39,7 @@ func _on_area_entered(area: Area2D) -> void:
 		restart.emit()
 		print("restart")
 		$"../restart_timer".start()
+
 	
 	if area is bullet_item:
 		ammo += 1
