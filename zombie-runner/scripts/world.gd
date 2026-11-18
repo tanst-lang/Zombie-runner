@@ -2,7 +2,6 @@ extends Node2D
 
 var score= 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Engine.time_scale= 1
@@ -21,7 +20,7 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	var enemy = preload("res://enemy_scene.tscn").instantiate()
 	enemy.position.y = 0
-	enemy.position.x = randf_range(1,110) * 10
+	enemy.position.x = randf_range(3,9) * 100
 	enemy.enemy_killed.connect(_on_enemy_killed)
 	add_child(enemy)
 
@@ -34,12 +33,6 @@ func _on_enemy_killed():
 	print("enemy killed")
 	score += 10
 	_update_ui()
-
-
-func _on_restart_timer_timeout() -> void:
-	$"restart screen".show()
-	$game_ui.hide()
-	Engine.time_scale=0
 
 
 func _on_item_timer_timeout() -> void:
@@ -57,6 +50,7 @@ func _on_item_timer_timeout() -> void:
 
 
 
+
 func _on_game_timer_timeout() -> void:
 	if GlobalVariable.speed <500:
 		GlobalVariable.speed += 30
@@ -69,6 +63,12 @@ func _on_score_timer_timeout() -> void:
 
 
 
-
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main-menu_scene.tscn")
+
+
+func _on_character_body_2d_restart() -> void:
+	$"restart screen/score_label".text = "score " + str(score)
+	$"restart screen".show()
+	$game_ui.hide()
+	Engine.time_scale=0
